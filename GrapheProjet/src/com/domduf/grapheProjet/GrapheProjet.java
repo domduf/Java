@@ -8,6 +8,8 @@ public class GrapheProjet {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		
+		
 		// déclaration d'un graphe
 		Graphe g = new Graphe(3);
 		
