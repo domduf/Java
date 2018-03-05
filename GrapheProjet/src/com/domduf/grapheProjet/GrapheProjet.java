@@ -36,6 +36,7 @@ public class GrapheProjet {
 		        
 		        if (choixMenu==1) {
 		            // redefinition des successeurs
+		        	g.entreSuccesseurs();
 		          }
 		        
 		        if (choixMenu==2) {
