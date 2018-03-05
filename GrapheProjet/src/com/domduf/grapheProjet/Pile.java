@@ -2,12 +2,12 @@ package com.domduf.grapheProjet;
 
 public class Pile {
 	
-	private int profondeur=10;
+	private int profondeur=100;
 	private int[] tabValeur= new int[profondeur];
 	private int pointeur=0;
 	
 	Pile(){
-		Terminal.ecrireStringln("Instanciation d'une pile de calcul");
+		//Terminal.ecrireStringln("Instanciation d'une pile de calcul");
 		
 		for (int i = 0; i < this.profondeur; i++) {
 			tabValeur[i]=0;
@@ -18,11 +18,11 @@ public class Pile {
 	public int getPile(){
 		
 		if (!pileVide()) {
-			Terminal.ecrireStringln("sommet de la pile ->"+this.tabValeur[this.pointeur-1]);
+			//Terminal.ecrireStringln("sommet de la pile ->"+this.tabValeur[this.pointeur-1]);
 			return this.tabValeur[this.pointeur-1];
 		}
 		else 
-			Terminal.ecrireStringln("Pile vide");
+			//Terminal.ecrireStringln("Pile vide");
 			return 9999;
 
 	}

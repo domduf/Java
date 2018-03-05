@@ -137,7 +137,7 @@ public class Graphe {
 	
 	private Sommet rechercheSuccesseur(Sommet s, int[] tableauMarquage){
 		
-		Terminal.ecrireStringln("Dans rechercheSuccesseur");
+		//Terminal.ecrireStringln("Dans rechercheSuccesseur");
 		
 				// boucle sur le tableau des successeurs de sommetATraiter
 				for (int i = 0; i < s.getSuccesseurs().length; i++) {
@@ -169,6 +169,8 @@ public class Graphe {
 		// affiche les sommets
 		for (int i = 0; i < nbSommet; i++) {
 			Terminal.ecrireStringln("Sommet "+(i+1)+" "+sommetTab[i].getNom());
+			Terminal.ecrireStringln("Successeurs: ");
+			sommetTab[i].afficheSuccesseurs();
 		}
 	}
 	
