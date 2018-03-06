@@ -17,11 +17,15 @@ public class GrapheProjet {
 	    //----------------définition des menus------------------------
 		
 	    String choixGeneral[]= { "Redéfinir les Successeurs des Sommets", 
-	    		"Explore en profoneur", "Tri topologique", "Changer de Graphe"};
+	    		"Explore en profondeur", "Explore en largeur","Tri topologique", "Changer de Graphe"};
 	    Menu menuGeneral = new Menu("MENU GENERAL \n Que voulez-vous faire ?", choixGeneral);    
 	    
 	    
 	    while (!sortir) {
+	    	
+	        Terminal.ecrireStringln("----------------------------------------------");			
+	        Terminal.ecrireStringln("--------    ENTREE D'UN GRAPHE     -----------");
+	        Terminal.ecrireStringln("----------------------------------------------");
 	    	
 			Terminal.ecrireStringln("Combien de Sommet pour votre Graphe ? (15 max.)");
 			nbSommet=Menu.saisirChoix(15);
@@ -46,21 +50,23 @@ public class GrapheProjet {
 		          }
 		        
 		        if (choixMenu==3) {
-		        	// Tri topologique
+		        	// calcul du parcours en largeur du graph
+		        	g.parcoursLargeur();
 		          }
 		        
 		        if (choixMenu==4) {
-					// 
+					// Tri topologique
 				}
 		        
-		        if (choixMenu==4) {
+		        if (choixMenu==5) {
 					// QUITTER
 		        	fin=true;
 				}
 	        
 	        
 			}
-	        
+			
+
 		}
 	    	
 		Terminal.ecrireStringln("Merci, programme terminé.");

@@ -47,18 +47,18 @@ public class File {
 		} else {
 			this.tabValeur[pointeurEntree]=v;
 			this.pointeurSortie++;
-		}
-		//incremente le pointeur de sortie
-		//this.pointeurSortie++;
-		
+		}		
 	}
 	
+	// sort la première valeur de la file
 	public int popFile(){
 		this.pointeurSortie--;
 		return this.tabValeur[this.pointeurSortie];
 	}
 	
-	private boolean fileVide(){
+	
+	// test file vide
+	public boolean fileVide(){
 		return pointeurSortie==pointeurEntree;
 	}
 	

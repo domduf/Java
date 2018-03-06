@@ -134,6 +134,105 @@ public class Graphe {
 		
 	}
 	
+	/*
+	 * 
+	 */
+	public void parcoursLargeur(){
+		
+		Sommet sommetDepart;
+		
+		// declare systeme de marquage
+		this.tabMarquage = new int[this.nbSommet]; 
+		
+		//init systeme de marquage à 0
+		for (int i = 0; i < tabMarquage.length; i++) {
+			tabMarquage[i]=0;
+		}
+		
+		
+		Terminal.ecrireStringln("Dans la methode de parcours en largeur");
+		
+		
+		// affiche les sommets
+		afficheListeSommets();
+		
+		// choix du sommet de départ
+		sommetDepart = choixSommet();
+		
+		// affiche le sommet choisi
+		Terminal.ecrireString("Vous avez choisi le sommet ");
+		sommetDepart.afficheSommet();
+		
+		
+		//-------------début algorythme parcoursLargeur -----------//
+		//     		voir cours NFA010 p26
+		
+		
+		// declaration successeur S non marque
+		Sommet sommetS;
+		
+		// la pile est vide
+		File file= new File();
+		
+		// traiter i
+		Sommet sommetATraiter = sommetDepart;
+		
+		// Empiler i
+		file.pushFile(sommetDepart.getIndex());
+		
+		
+		//marquer i
+		tabMarquage[sommetDepart.getIndex()]=1;
+		
+		
+		file.getFile();
+		
+		// Tant que la pile n'est pas vide
+
+		while (!file.fileVide()) {
+			
+			// sortir de la file son premier element, soit TF
+			
+			sommetATraiter=sommetTab[file.popFile()];
+			/*
+			 * tant qu'il existe un successeur S au sommet en tête de pile
+			 * qui soit non marqué, faire
+			 */
+			while ( rechercheSuccesseur(sommetATraiter, tabMarquage).getIndex() 
+					!= sommetATraiter.getIndex()) {
+				
+				sommetS = rechercheSuccesseur(sommetATraiter, tabMarquage);
+				
+				//Terminal.ecrireStringln("Dans while du S, tabMarquage:");
+				//afficheTableauMarquage(tabMarquage);
+				Terminal.ecrireStringln("Sommet S non marqué ->"+(sommetS.getIndex()+1));
+						
+				// empiler S
+				file.pushFile(sommetS.getIndex());
+				
+				
+				// marquer S
+				tabMarquage[sommetS.getIndex()]=1;
+				Terminal.ecrireStringln(" marquage du Sommet "+(sommetS.getIndex()+1));
+				//afficheTableauMarquage(tabMarquage);
+				
+						
+			} 
+			
+			// affiche la pile
+			file.getFile();
+			
+
+			
+			
+			
+			
+		}
+		
+		// affiche le systeme de marquage
+		afficheTableauMarquage(tabMarquage);
+		
+	}
 	
 	private Sommet rechercheSuccesseur(Sommet s, int[] tableauMarquage){
 		
