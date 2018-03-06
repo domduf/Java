@@ -90,14 +90,14 @@ public class Menu {
 	static int saisirChoix(int n){
 		int choix=0;
 		boolean fini=false;
-		Terminal.ecrireStringln("vous avez le choix entre "+n+ " valeurs.\n" +
+		Terminal.ecrireStringln("vous avez le choix de 0 à "+n+ ".\n" +
 				"Entrez votre choix.");
 
 		while (!fini){
 			try{
 				choix=Terminal.lireInt();
 
-				if (choix<1||choix>n){
+				if (choix<0 || choix>n){
 					throw new ChoixHorsLimites();
 				}
 				fini=true;

@@ -6,7 +6,7 @@ public class Graphe {
 	private  Sommet[] sommetTab;
 	private int nbSommet;
 	private int[] tabMarquage;
-
+	private  Menu choixSommet;
 	
 	// constructeur
 	public Graphe(int s){
@@ -278,7 +278,7 @@ public class Graphe {
 	public Sommet choixSommet(){
 		int choix;
 		Terminal.ecrireString("entrez le n° du Sommet choisi ->");
-		choix= Terminal.lireInt();
+		choix= Menu.saisirChoix(nbSommet);
 		choix--;
 		return sommetTab[choix];
 	}
@@ -302,7 +302,8 @@ public class Graphe {
 	private void entreSuccesseurSommet(Sommet s){
 		int nbSuccessseurs;
 		Terminal.ecrireStringln("Combien de successeurs du Sommet "+ s.getNom()+" ?");
-		nbSuccessseurs=Terminal.lireInt();
+		nbSuccessseurs=Menu.saisirChoix(nbSommet);
+		//nbSuccessseurs=Terminal.lireInt();
 		
 		// regle longueur du tableau des successeurs du sommet
 		s.setTabSuccesseurs(nbSuccessseurs, nbSommet);
@@ -310,7 +311,8 @@ public class Graphe {
 		for (int i = 0; i < nbSuccessseurs; i++) {
 			Terminal.ecrireStringln("Entrez le numéro du successeur "+(i+1)
 					+" du Sommet "+ s.getNom());
-			s.setSuccesseur((Terminal.lireInt()-1), 1);
+			s.setSuccesseur((Menu.saisirChoix(nbSommet)-1), 1);
+			//s.setSuccesseur((Terminal.lireInt()-1), 1);
 		}
 		
 		s.afficheSuccesseurs();
