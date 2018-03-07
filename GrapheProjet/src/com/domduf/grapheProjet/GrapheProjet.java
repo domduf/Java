@@ -17,11 +17,14 @@ public class GrapheProjet {
 	    //----------------définition des menus------------------------
 		
 	    String choixGeneral[]= { "Redéfinir les Successeurs des Sommets", 
-	    		"Explore en profondeur", "Explore en largeur","Tri topologique", "Changer de Graphe"};
+	    		"Explore en profondeur", "Explore en largeur",
+	    		"Affiche Composante Connexe", "Tri topologique",
+	    		"Changer de Graphe", "QUITTER"};
 	    Menu menuGeneral = new Menu("MENU GENERAL \n Que voulez-vous faire ?", choixGeneral);    
 	    
 	    
 	    while (!sortir) {
+	    	fin=false;
 	    	
 	        Terminal.ecrireStringln("----------------------------------------------");			
 	        Terminal.ecrireStringln("--------    ENTREE D'UN GRAPHE     -----------");
@@ -34,8 +37,10 @@ public class GrapheProjet {
 			Graphe g = new Graphe(nbSommet);
 	    	
 			while ( ! fin) {
-		    	
-		        // affiche le menu général et entre le choix
+				
+				
+		        
+				// affiche le menu général et entre le choix
 		        int choixMenu=menuGeneral.afficheSaisitRetourneChoix();
 		        
 		        if (choixMenu==1) {
@@ -55,13 +60,25 @@ public class GrapheProjet {
 		          }
 		        
 		        if (choixMenu==4) {
-					// Tri topologique
+		        	
+					// Composante Connexe
+		        	g.afficheComposanteConnexe();
 				}
 		        
 		        if (choixMenu==5) {
+					// Tri topologique
+				}
+		        if (choixMenu==6) {
 					// QUITTER
 		        	fin=true;
 				}
+		        
+		        if (choixMenu==7) {
+					// QUITTER
+		        	fin=true;
+		        	sortir=true;
+				}
+		      
 	        
 	        
 			}

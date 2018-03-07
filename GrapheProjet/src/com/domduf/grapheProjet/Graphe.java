@@ -6,6 +6,7 @@ public class Graphe {
 	private  Sommet[] sommetTab;
 	private int nbSommet;
 	private int[] tabMarquage;
+	private int[] tabComposanteConnexe;
 	private  Menu choixSommet;
 	
 	// constructeur
@@ -133,6 +134,104 @@ public class Graphe {
 		afficheTableauMarquage(tabMarquage);
 		
 	}
+
+	private int[] parcoursProfondeur(Sommet s){
+		
+		// choix du sommet de départ
+		Sommet sommetDepart=s;
+		
+		// declare systeme de marquage
+		this.tabMarquage = new int[this.nbSommet]; 
+		
+		//init systeme de marquage à 0
+		for (int i = 0; i < tabMarquage.length; i++) {
+			tabMarquage[i]=0;
+		}
+		
+		
+		Terminal.ecrireStringln("Dans la methode de parcours en profondeur");
+		
+		
+		
+
+		
+		// affiche le sommet choisi
+		Terminal.ecrireString("Vous avez choisi le sommet ");
+		sommetDepart.afficheSommet();
+		
+		
+		//-------------début algorythme parcoursProfondeur -----------//
+		//     		voir cours NFA010 p23
+		
+		
+		// declaration successeur S non marque
+		Sommet sommetS;
+		
+		// la pile est vide
+		Pile pile= new Pile();
+		
+		// traiter i
+		Sommet sommetATraiter = sommetDepart;
+		
+		// Empiler i
+		pile.pushPile(sommetDepart.getIndex());
+		
+		
+		//marquer i
+		tabMarquage[sommetDepart.getIndex()]=1;
+		
+		
+		pile.getPile();
+		
+		// Tant que la pile n'est pas vide
+
+		while (!pile.pileVide()) {
+			
+			
+			/*
+			 * tant qu'il existe un successeur S au sommet en tête de pile
+			 * qui soit non marqué, faire
+			 */
+			while ( rechercheSuccesseur(sommetATraiter, tabMarquage).getIndex() 
+					!= sommetATraiter.getIndex()) {
+				
+				sommetS = rechercheSuccesseur(sommetATraiter, tabMarquage);
+				
+				//Terminal.ecrireStringln("Dans while du S, tabMarquage:");
+				//afficheTableauMarquage(tabMarquage);
+				Terminal.ecrireStringln("Sommet S non marqué ->"+(sommetS.getIndex()+1));
+						
+				// empiler S
+				pile.pushPile(sommetS.getIndex());
+				
+				
+				// marquer S
+				tabMarquage[sommetS.getIndex()]=1;
+				Terminal.ecrireStringln(" marquage du Sommet "+(sommetS.getIndex()+1));
+				//afficheTableauMarquage(tabMarquage);
+				
+						
+			} 
+			
+			// affiche la pile
+			pile.getPile();
+			
+			// dépiler (sortir le sommet de la pile)
+			sommetATraiter=sommetTab[pile.popPile()];
+			
+			
+			
+			
+		}
+		
+		// affiche le systeme de marquage
+		afficheTableauMarquage(tabMarquage);
+		
+		//retourne le systeme de marquage
+		return tabMarquage;
+		
+	}
+
 	
 	/*
 	 * 
@@ -232,6 +331,58 @@ public class Graphe {
 		// affiche le systeme de marquage
 		afficheTableauMarquage(tabMarquage);
 		
+	}
+	
+	
+	public void determineComposantesConnexes(){
+		
+		// init no de composante Connexe
+		int num=1;
+		
+		// init du tableau des Composante Connexe
+		for (int i = 0; i < sommetTab.length; i++) {
+			sommetTab[i].setNumComposante(0);
+		}
+		
+		// recherche pour tout sommet S
+		for (int i = 0; i < sommetTab.length; i++) {
+			
+			Sommet s =sommetTab[i];
+			
+			// si numeroComposante(S)=0
+			if (s.getNumComposanteConnexe()==0){
+				
+				// alors parcours en profondeur des voisins de S
+				int[] tabVoisinDeS=parcoursProfondeur(s);
+				
+					// pour tous voisins S' de S				
+					for (int j = 0; j < tabVoisinDeS.length; j++) {
+						
+						// si S' est marqué
+						if (tabVoisinDeS[j]==1) {
+							
+							// assigne numero de composant
+							sommetTab[j].setNumComposante(num);
+						}
+					}
+					
+					// incremente no de comosante
+					num++;
+				
+			}
+		}
+		
+	}
+	
+	
+	public void afficheComposanteConnexe(){
+		
+		determineComposantesConnexes();
+		
+		for (Sommet s : sommetTab) {
+			Terminal.ecrireStringln("Sommet "+s.getNom()
+					+"-> composante "+s.getNumComposanteConnexe());
+		}
 	}
 	
 	private Sommet rechercheSuccesseur(Sommet s, int[] tableauMarquage){

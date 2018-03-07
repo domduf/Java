@@ -7,6 +7,8 @@ public class Sommet {
 	private int index;
 	private int nbSuccesseurs;
 	private int[] tabSuccesseurs; 
+	private int[] tabAscendants ;
+	private int numComposante;
 	
 	// constructeur
 	public Sommet(int n){
@@ -35,6 +37,13 @@ public class Sommet {
 	}
 	
 	
+	public void setNumComposante(int num){
+		this.numComposante=num;
+	}
+	
+	public int getNumComposanteConnexe(){
+		return this.numComposante;
+	}
 	
 	public void setSuccesseur(int a, int v){
 		this.tabSuccesseurs[a]=v;
