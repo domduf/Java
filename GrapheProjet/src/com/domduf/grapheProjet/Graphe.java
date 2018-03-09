@@ -363,6 +363,8 @@ public class Graphe {
 		
 		for (int i = 0; i < this.nbSommet; i++) {
 			
+			
+			
 			// pour chaque sommet du graphe
 			entrePredecesseurSommet(this.sommetTab[i]);
 			

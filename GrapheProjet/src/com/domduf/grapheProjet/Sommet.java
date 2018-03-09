@@ -52,6 +52,11 @@ public class Sommet {
 		this.tabSuccesseurs[a]=v;
 	}
 	
+	public void setPredecesseur(int a, int v){
+		this.tabAscendants[a]=v;
+	}	
+	
+	
 	public int[] getSuccesseurs(){
 		return this.tabSuccesseurs;
 	}
