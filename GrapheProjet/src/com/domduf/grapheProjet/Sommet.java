@@ -32,7 +32,10 @@ public class Sommet {
 		this.tabSuccesseurs = new int[nbSommets];
 		
 		for (int i = 0; i < tabSuccesseurs.length; i++) {
+			// raz successeurs
 			tabSuccesseurs[i]=0;
+			//raz ascendants
+			tabAscendants[i]=0;
 		}
 	}
 	
@@ -60,6 +63,17 @@ public class Sommet {
 		}
 		Terminal.sautDeLigne();
 	}
+	
+	
+	// TODO
+	public void affichePredecesseurs(){
+		
+		for (int i = 0; i < tabAscendants.length; i++) {
+			Terminal.ecrireString("-"+tabAscendants[i]);
+		}
+		Terminal.sautDeLigne();
+	}
+	
 	
 	public void afficheSommet(){
 		Terminal.ecrireStringln(this.nom+"("+(this.index+1)+")");

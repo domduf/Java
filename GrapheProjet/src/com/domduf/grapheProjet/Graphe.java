@@ -356,9 +356,18 @@ public class Graphe {
 		
 		for (int i = 0; i < this.nbSommet; i++) {
 			
+			// pour chaque sommet du graphe
 			entreSuccesseurSommet(this.sommetTab[i]);
 			
 		}
+		
+		for (int i = 0; i < this.nbSommet; i++) {
+			
+			// pour chaque sommet du graphe
+			entrePredecesseurSommet(this.sommetTab[i]);
+			
+		}
+		
 		
 	}
 	
@@ -385,6 +394,21 @@ public class Graphe {
 		
 		
 	}
+	
+	
+	//TODO
+	private void entrePredecesseurSommet(Sommet s){
+
+		
+
+		
+		s.affichePredecesseurs();
+		
+		
+	}
+	
+	
+	
 	
 	
 	/*
