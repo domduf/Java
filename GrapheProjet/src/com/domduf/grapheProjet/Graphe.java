@@ -6,9 +6,7 @@ public class Graphe {
 	private  Sommet[] sommetTab;
 	private int nbSommet;
 	private int[] tabMarquage;
-	private int[] tabComposanteConnexe;
-	private  Menu choixSommet;
-	
+
 	// constructeur
 	public Graphe(int s){
 		
