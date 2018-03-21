@@ -27,9 +27,11 @@ public class Sommet {
 		return this.index;
 	}
 	
+	
 	public void setTabSuccesseurs(int nbSuccessseurs, int nbSommets){
 		this.nbSuccesseurs = nbSuccessseurs;
 		this.tabSuccesseurs = new int[nbSommets];
+		this.tabAscendants = new int[nbSommets];
 		
 		for (int i = 0; i < tabSuccesseurs.length; i++) {
 			// raz successeurs

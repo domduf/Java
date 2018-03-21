@@ -366,7 +366,7 @@ public class Graphe {
 			
 			
 			// pour chaque sommet du graphe
-			entrePredecesseurSommet(this.sommetTab[i]);
+			calculPredecesseurSommet(this.sommetTab[i]);
 			
 		}
 		
@@ -399,11 +399,33 @@ public class Graphe {
 	
 	
 	//TODO
-	private void entrePredecesseurSommet(Sommet s){
+	private void calculPredecesseurSommet(Sommet s){
 
+		int valeurSuccesseur;
 		
-
+		// boucle sur le nb de sommets
+		for (int indSommet = 0; indSommet < this.nbSommet; indSommet++) {
+			
+			
+			
+			// meme boucle
+			for (int indSuccesseur = 0; indSuccesseur < this.nbSommet; indSuccesseur++) {
+				
+				// retrouve la valeur du successeur
+				valeurSuccesseur=sommetTab[indSommet].getSuccesseurs()[indSuccesseur];
+				
+				sommetTab[indSuccesseur].setPredecesseur(indSommet, valeurSuccesseur);
+				
+				
+				
+			}
+			
+		}
 		
+		Terminal.ecrireStringln("---------------------------------------------");
+		
+		Terminal.ecrireString("Prédecesseurs du sommet: ");
+		s.afficheSommet();
 		s.affichePredecesseurs();
 		
 		
