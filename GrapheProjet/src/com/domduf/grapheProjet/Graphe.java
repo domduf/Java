@@ -146,6 +146,38 @@ public class Graphe {
 		return tabMarquage;
 		
 	}
+	
+	
+	
+	private int[] parcoursDesVoisins(Sommet s){
+		
+		Terminal.ecrireStringln("Dans parcoursDesVoisins de ->"+(s.getIndex()+1));
+		
+		calculPredecesseurSommet(s);
+		
+		// declaration des tableaux
+		int[] tabVoisinsCalcules = new int[nbSommet];
+		int[] tabSuccesseurs=s.getSuccesseurs();
+		int[] tabPredecesseurs=s.getPredecesseurs();
+		
+		// marquage du sommet s dans les voisins
+		tabVoisinsCalcules[s.getIndex()]=1;
+		
+		
+		for (int i = 0; i < tabVoisinsCalcules.length; i++) {
+			if (tabSuccesseurs[i]==1 | tabPredecesseurs[i]==1){
+				tabVoisinsCalcules[i]=1;
+			}
+			else tabVoisinsCalcules[i]=0;
+			
+		}
+		
+		
+		return tabVoisinsCalcules;
+	}
+	
+	
+	
 
 	
 	/*
@@ -268,7 +300,7 @@ public class Graphe {
 			if (s.getNumComposanteConnexe()==0){
 				
 				// alors parcours en profondeur des voisins de S
-				int[] tabVoisinDeS=parcoursProfondeur(s);
+				int[] tabVoisinDeS=parcoursDesVoisins(s);
 				
 					// pour tous voisins S' de S				
 					for (int j = 0; j < tabVoisinDeS.length; j++) {
@@ -281,7 +313,7 @@ public class Graphe {
 						}
 					}
 					
-					// incremente no de comosante
+					// incremente no de composante
 					num++;
 				
 			}

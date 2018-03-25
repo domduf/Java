@@ -63,6 +63,10 @@ public class Sommet {
 		return this.tabSuccesseurs;
 	}
 	
+	public int[] getPredecesseurs(){
+		return this.tabAscendants;
+	}
+	
 	public void afficheSuccesseurs(){
 		
 		for (int i = 0; i < tabSuccesseurs.length; i++) {
