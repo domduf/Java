@@ -8,7 +8,7 @@ public class File {
 	private int pointeurSortie;
 	
 	File(){
-		//Terminal.ecrireStringln("Instanciation d'une pile de calcul");
+		//Terminal.ecrireStringln("Instanciation d'une file de calcul");
 		
 		for (int i = 0; i < this.profondeur; i++) {
 			this.tabValeur[i]=0;
@@ -17,20 +17,20 @@ public class File {
 		this.pointeurSortie=0;
 	}
 	
-	// affiche le contenu de la pile au pointeur de sortie
+	// affiche le contenu de la file au pointeur de sortie
 	public int getFile(){
 		
 		if (!fileVide()) {
-			//Terminal.ecrireStringln("sommet de la pile ->"+this.tabValeur[this.pointeur-1]);
+			//Terminal.ecrireStringln("sommet de la file ->"+this.tabValeur[this.pointeur-1]);
 			return this.tabValeur[this.pointeurSortie-1];
 		}
 		else 
-			//Terminal.ecrireStringln("Pile vide");
+			//Terminal.ecrireStringln("File vide");
 			return 9999;
 
 	}
 	
-	// entre valeur dans la pile
+	// entre valeur dans la file
 	public void pushFile(int v) {
 		
 		Terminal.ecrireIntln(pointeurSortie);
