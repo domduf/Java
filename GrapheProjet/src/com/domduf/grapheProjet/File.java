@@ -1,6 +1,10 @@
 package com.domduf.grapheProjet;
 
-
+/**
+ * 
+ * file d'attente toute simple
+ * @author domduf
+ */
 public class File {
 	private int profondeur=100;
 	private int[] tabValeur= new int[profondeur];
@@ -17,7 +21,9 @@ public class File {
 		this.pointeurSortie=0;
 	}
 	
-	// affiche le contenu de la file au pointeur de sortie
+	/*
+	 *  affiche le contenu de la file au pointeur de sortie
+	 */
 	public int getFile(){
 		
 		if (!fileVide()) {
@@ -30,7 +36,10 @@ public class File {
 
 	}
 	
-	// entre valeur dans la file
+	/**
+	 * entre une valeur dans la file
+	 * @param v cette valeur
+	 */
 	public void pushFile(int v) {
 		
 		Terminal.ecrireIntln(pointeurSortie);
@@ -50,14 +59,22 @@ public class File {
 		}		
 	}
 	
-	// sort la première valeur de la file
+	
+	/**
+	 * sort la première valeur de la file
+	 * @return cette valeur
+	 */
 	public int popFile(){
 		this.pointeurSortie--;
 		return this.tabValeur[this.pointeurSortie];
 	}
 	
 	
-	// test file vide
+
+	/**
+	 * test de file vide
+	 * @return boolean true si vide
+	 */
 	public boolean fileVide(){
 		return pointeurSortie==pointeurEntree;
 	}
